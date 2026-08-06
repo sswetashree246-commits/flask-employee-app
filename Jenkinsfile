@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Check Python') {
             steps {
                 bat '"C:\\Users\\sswet\\AppData\\Local\\Python\\bin\\python.exe" --version'
@@ -17,13 +11,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat '"C:\\Users\\sswet\\AppData\\Local\\Python\\bin\\python.exe" -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'pytest'
+                bat '"C:\\Users\\sswet\\AppData\\Local\\Python\\bin\\python.exe" -m pytest'
             }
         }
     }

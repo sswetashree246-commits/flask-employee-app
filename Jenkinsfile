@@ -11,7 +11,7 @@ pipeline {
 
         stage('Check Python') {
             steps {
-                bat 'python --version'
+                bat '"C:\\Users\\sswet\\AppData\\Local\\Python\\bin\\python.exe" --version'
             }
         }
 

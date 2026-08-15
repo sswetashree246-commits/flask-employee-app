@@ -22,11 +22,14 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-         steps {
-             withSonarQubeEnv('SonarQube') {
-                bat 'sonar-scanner -Dsonar.projectKey=flask-employee-app -Dsonar.sources=.'
-              }
+    steps {
+        script {
+            def scannerHome = tool 'SonarQubeScanner'
+
+            withSonarQubeEnv('SonarQube') {
+                bat "\"${scannerHome}\\bin\\sonar-scanner.bat\" -Dsonar.projectKey=flask-employee-app -Dsonar.sources=."
             }
         }
     }
+}
 }

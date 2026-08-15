@@ -20,5 +20,13 @@ pipeline {
                 bat '"C:\\Users\\sswet\\AppData\\Local\\Python\\bin\\python.exe" -m pytest'
             }
         }
+
+        stage('SonarQube Analysis') {
+         steps {
+             withSonarQubeEnv('SonarQube') {
+                bat 'sonar-scanner -Dsonar.projectKey=flask-employee-app -Dsonar.sources=.'
+              }
+            }
+        }
     }
 }
